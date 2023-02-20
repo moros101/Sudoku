@@ -1,9 +1,11 @@
 package com.example.sudoku;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -12,8 +14,16 @@ import androidx.annotation.Nullable;
 public class SudokuBoardView extends View{
 
     private final int boardColor;
+    private final int cellFillColor;
+    private final int cellsHighlightColor;
     private final Paint boardColorPaint = new Paint();
+    private final Paint cellFillColorPaint = new Paint();
+    private final Paint cellsHighlightColorPaint = new Paint();
     private int cellSize;
+
+    // gives data about touch events that happen on user screen
+    private final Solver solver = new Solver();
+
     public SudokuBoardView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
 
@@ -21,6 +31,8 @@ public class SudokuBoardView extends View{
 
         try{
             boardColor = a.getInteger(R.styleable.SudokuBoardView_boardColor,0);
+            cellFillColor = a.getInteger(R.styleable.SudokuBoardView_cellFillColor,0);
+            cellsHighlightColor = a.getInteger(R.styleable.SudokuBoardView_cellsHighlightColor,0);
 
         }finally {
             a.recycle();
@@ -47,8 +59,49 @@ public class SudokuBoardView extends View{
         boardColorPaint.setColor(boardColor);
         boardColorPaint.setAntiAlias(true);
 
+        cellFillColorPaint.setStyle(Paint.Style.FILL);
+//        cellFillColorPaint.setStrokeWidth(16);
+        cellFillColorPaint.setColor(cellFillColor);
+        cellFillColorPaint.setAntiAlias(true);
+
+        cellsHighlightColorPaint.setStyle(Paint.Style.FILL);
+//        cellsHighlightColorPaint.setStrokeWidth(16);
+        cellsHighlightColorPaint.setColor(cellsHighlightColor);
+        cellsHighlightColorPaint.setAntiAlias(true);
+
+        colorCell(canvas, Solver.getSelected_row(), Solver.getSelected_col());
         canvas.drawRect(0,0,getWidth(),getHeight(),boardColorPaint);
         drawBoard(canvas);
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    @Override
+    public boolean onTouchEvent(MotionEvent event){
+        boolean isValid;
+
+        float x = event.getX();
+        float y = event.getY();
+
+        int action = event.getAction();
+
+        if(action == MotionEvent.ACTION_DOWN){
+            Solver.setSelected_row((int) Math.ceil(y/cellSize));
+            Solver.setSelected_col((int) Math.ceil(x/cellSize));
+            isValid = true;
+        }else{
+            isValid = false;
+        }
+        System.out.println("check: "+isValid);
+        return isValid;
+    }
+
+    private void colorCell(Canvas canvas,int r,int c){
+        if(Solver.getSelected_col() != -1 && Solver.getSelected_row() != -1){
+            canvas.drawRect((c-1)*cellSize,0,c*cellSize,getHeight(),cellsHighlightColorPaint);
+            canvas.drawRect(0,(r-1)*cellSize,getWidth(),r*cellSize,cellsHighlightColorPaint);
+            canvas.drawRect((c-1)*cellSize,(r-1)*cellSize,c*cellSize,r*cellSize,cellFillColorPaint);
+        }
+        invalidate();
     }
 
     private void drawThickLine(){

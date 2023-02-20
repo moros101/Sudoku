@@ -8,10 +8,11 @@
     tools:context=".MainActivity">
 
     <com.example.sudoku.SudokuBoardView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        custom:layout_constraintDimensionRatio="1:1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         custom:boardColor="#000000"
+        custom:cellFillColor="#6600DDFF"
+        custom:cellsHighlightColor="#2600DDFF"
         custom:layout_constraintBottom_toBottomOf="parent"
         custom:layout_constraintEnd_toEndOf="parent"
         custom:layout_constraintStart_toStartOf="parent"
