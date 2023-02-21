@@ -123,7 +123,7 @@ public class SudokuBoardView extends View{
                     width = letterPaint.measureText(text);
                     height = letterPaintBounds.height();
 
-                    canvas.drawText(text,(j*cellSize)+(cellSize-width)/2, (i*cellSize)+(cellSize-height)/2,letterPaint);
+                    canvas.drawText(text,(j*cellSize)+(cellSize-width)/2, (i*cellSize+cellSize)-(cellSize-height)/2,letterPaint);
                 }
             }
         }
@@ -187,5 +187,9 @@ public class SudokuBoardView extends View{
         }
 
 
+    }
+
+    public Solver getSolver() {
+        return this.solver;
     }
 }

@@ -35,7 +35,7 @@ public class Solver {
         }
     }
     // update board with new num
-    private void setNumPos(int num){
+    public void setNumPos(int num){
         if(this.selected_col != -1 && this.selected_row != -1){
             if(this.board[this.selected_row-1][this.selected_col-1] == num){
                 this.board[this.selected_row-1][this.selected_col-1] = 0;
@@ -43,6 +43,7 @@ public class Solver {
                 this.board[this.selected_row-1][this.selected_col-1] = num;
             }
         }
+        System.out.println("check: "+this.board[this.selected_row-1][this.selected_col-1]);
     }
 
     public int [][] getBoard(){
