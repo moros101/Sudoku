@@ -15,7 +15,7 @@
         custom:cellFillColor="#6600DDFF"
         custom:cellsHighlightColor="#2600DDFF"
         custom:letterColor="#000000"
-        custom:letterColorSolve="#000000"
+        custom:letterColorSolve="#00FF00"
         custom:layout_constraintEnd_toEndOf="parent"
         custom:layout_constraintStart_toStartOf="parent"
         custom:layout_constraintTop_toTopOf="parent"

@@ -63,10 +63,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void solve(View view){
-        if(solveBTN.getText().toString().equals("SOLVE")){
+        if(solveBTN.getText().toString().equals("SOLVE")){  // if clicked on solve
             solveBTN.setText("CLEAR");
-        }else{
+
+            gameBoardSolver.getEmptyBoxIndexes();
+
+            SolveBoardThread solveBoardThread = new SolveBoardThread();
+            new Thread(solveBoardThread).start();
+            gameBoard.invalidate();
+        }else{                                              // if  clicked on clear
             solveBTN.setText("SOLVE");
+            gameBoardSolver.resetBoard();
+            gameBoard.invalidate();
+        }
+    }
+
+    class SolveBoardThread implements Runnable{
+
+        @Override
+        public void run(){
+            gameBoardSolver.solve(gameBoard);
         }
     }
 }

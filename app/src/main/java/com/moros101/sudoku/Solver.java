@@ -86,8 +86,17 @@ public class Solver {
         return false;
     }
 
+    public void resetBoard(){
+        for(int i=0; i<9; i++){
+            for(int j=0; j<9; j++){
+                this.board[i][j] = 0;
+            }
+        }
+        this.emptyBoxIndex = new ArrayList<>();
+    }
+
     // extract rows and cols of empty box i.e. 0
-    public void getEmptyBoxIndexs(){
+    public void getEmptyBoxIndexes(){
         for(int i=0; i<9; i++){
             for(int j=0; j<9; j++){
                 if(this.board[i][j] == 0){
@@ -97,15 +106,6 @@ public class Solver {
                 }
             }
         }
-    }
-
-    public void resetBoard(){
-        for(int i=0; i<9; i++){
-            for(int j=0; j<9; j++){
-                this.board[i][j] = 0;
-            }
-        }
-        this.emptyBoxIndex = new ArrayList<>();
     }
     // update board with new num
     public void setNumPos(int num){
