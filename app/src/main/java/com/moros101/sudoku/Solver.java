@@ -98,6 +98,15 @@ public class Solver {
             }
         }
     }
+
+    public void resetBoard(){
+        for(int i=0; i<9; i++){
+            for(int j=0; j<9; j++){
+                this.board[i][j] = 0;
+            }
+        }
+        this.emptyBoxIndex = new ArrayList<>();
+    }
     // update board with new num
     public void setNumPos(int num){
         if(this.selected_col != -1 && this.selected_row != -1){
