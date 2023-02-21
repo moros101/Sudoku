@@ -7,18 +7,120 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.example.sudoku.SudokuBoardView
+    <com.moros101.sudoku.SudokuBoardView
+        android:id="@+id/sudokuBoardView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         custom:boardColor="#000000"
         custom:cellFillColor="#6600DDFF"
         custom:cellsHighlightColor="#2600DDFF"
-        custom:layout_constraintBottom_toBottomOf="parent"
         custom:layout_constraintEnd_toEndOf="parent"
         custom:layout_constraintStart_toStartOf="parent"
-        custom:layout_constraintTop_toTopOf="parent">
+        custom:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingClass">
 
-    </com.example.sudoku.SudokuBoardView>
+    </com.moros101.sudoku.SudokuBoardView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        custom:layout_constraintEnd_toEndOf="parent"
+        custom:layout_constraintStart_toStartOf="parent"
+        custom:layout_constraintTop_toBottomOf="@+id/sudokuBoardView"
+        tools:ignore="MissingConstraints,UselessLeaf">
+
+        <Button
+            android:id="@+id/button1"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="1"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/button2"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="2"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/button3"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="3"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/button4"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="4"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/button5"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="5"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/button6"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="6"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/button7"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="7"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/button8"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="8"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/button9"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="9"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
