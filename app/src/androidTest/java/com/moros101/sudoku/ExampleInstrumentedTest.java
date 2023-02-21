@@ -1,4 +1,4 @@
-package com.example.sudoku;
+package com.moros101.sudoku;
 
 import android.content.Context;
 

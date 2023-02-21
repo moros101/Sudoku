@@ -1,4 +1,4 @@
-package com.example.sudoku;
+package com.moros101.sudoku;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -69,7 +69,7 @@ public class SudokuBoardView extends View{
         cellsHighlightColorPaint.setColor(cellsHighlightColor);
         cellsHighlightColorPaint.setAntiAlias(true);
 
-        colorCell(canvas, Solver.getSelected_row(), Solver.getSelected_col());
+        colorCell(canvas, solver.getSelected_row(), solver.getSelected_col());
         canvas.drawRect(0,0,getWidth(),getHeight(),boardColorPaint);
         drawBoard(canvas);
     }
@@ -85,8 +85,8 @@ public class SudokuBoardView extends View{
         int action = event.getAction();
 
         if(action == MotionEvent.ACTION_DOWN){
-            Solver.setSelected_row((int) Math.ceil(y/cellSize));
-            Solver.setSelected_col((int) Math.ceil(x/cellSize));
+            solver.setSelected_row((int) Math.ceil(y/cellSize));
+            solver.setSelected_col((int) Math.ceil(x/cellSize));
             isValid = true;
         }else{
             isValid = false;
@@ -96,7 +96,7 @@ public class SudokuBoardView extends View{
     }
 
     private void colorCell(Canvas canvas,int r,int c){
-        if(Solver.getSelected_col() != -1 && Solver.getSelected_row() != -1){
+        if(solver.getSelected_col() != -1 && solver.getSelected_row() != -1){
             canvas.drawRect((c-1)*cellSize,0,c*cellSize,getHeight(),cellsHighlightColorPaint);
             canvas.drawRect(0,(r-1)*cellSize,getWidth(),r*cellSize,cellsHighlightColorPaint);
             canvas.drawRect((c-1)*cellSize,(r-1)*cellSize,c*cellSize,r*cellSize,cellFillColorPaint);
