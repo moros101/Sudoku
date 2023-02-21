@@ -49,6 +49,7 @@ public class Solver {
         return this.board;
     }
 
+
     public int getSelected_row() {
         return selected_row;
     }
