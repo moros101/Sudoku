@@ -11,6 +11,8 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+
 
 public class SudokuBoardView extends View{
 
@@ -76,9 +78,14 @@ public class SudokuBoardView extends View{
         cellsHighlightColorPaint.setColor(cellsHighlightColor);
         cellsHighlightColorPaint.setAntiAlias(true);
 
+        letterPaint.setStyle(Paint.Style.FILL);
+        letterPaint.setColor(letterColor);
+        cellsHighlightColorPaint.setAntiAlias(true);
+
         colorCell(canvas, solver.getSelected_row(), solver.getSelected_col());
         canvas.drawRect(0,0,getWidth(),getHeight(),boardColorPaint);
         drawBoard(canvas);
+        drawNum(canvas);
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -103,6 +110,9 @@ public class SudokuBoardView extends View{
     }
 
     private void drawNum(Canvas canvas){
+
+        letterPaint.setTextSize(cellSize);
+
         for(int i=0; i<9; i++){
             for(int j=0; j<9; j++){
                 if(solver.getBoard()[i][j] != 0){
@@ -117,7 +127,26 @@ public class SudokuBoardView extends View{
                 }
             }
         }
+
+        letterPaint.setColor(letterColorSolve);
+        
+        for(ArrayList<Object> letter :  solver.getEmptyBoxIndex()){
+            int r = (int) letter.get(0);
+            int c = (int) letter.get(1);
+
+            String text = Integer.toString(solver.getBoard()[r][c]);
+            float width,height;
+
+            letterPaint.getTextBounds(text,0,text.length(),letterPaintBounds);
+            width = letterPaint.measureText(text);
+            height = letterPaintBounds.height();
+
+            canvas.drawText(text,(c*cellSize)+(cellSize-width)/2, (r*cellSize)+(cellSize-height)/2,letterPaint);
+
+        }
     }
+
+    
 
     private void colorCell(Canvas canvas,int r,int c){
         if(solver.getSelected_col() != -1 && solver.getSelected_row() != -1){

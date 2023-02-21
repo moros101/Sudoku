@@ -23,7 +23,7 @@ public class Solver {
     }
 
     // extract rows and cols of empty box i.e. 0
-    public void getEmptyBoxIndex(){
+    public void getEmptyBoxIndexs(){
         for(int i=0; i<9; i++){
             for(int j=0; j<9; j++){
                 if(this.board[i][j] == 0){
@@ -49,6 +49,9 @@ public class Solver {
         return this.board;
     }
 
+    public ArrayList<ArrayList<Object>> getEmptyBoxIndex(){
+        return this.emptyBoxIndex;
+    }
 
     public int getSelected_row() {
         return selected_row;
