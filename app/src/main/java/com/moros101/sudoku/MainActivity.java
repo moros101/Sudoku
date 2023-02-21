@@ -4,11 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
     private SudokuBoardView gameBoard;
     private Solver gameBoardSolver;
+
+    private Button solveBTN;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
 
         gameBoard = findViewById(R.id.sudokuBoardView);
         gameBoardSolver = gameBoard.getSolver();
+
+        solveBTN = findViewById(R.id.solve_btn);
     }
 
     public void BTNOnePress(View view){
@@ -55,5 +60,13 @@ public class MainActivity extends AppCompatActivity {
     public void BTNNinePress(View view){
         gameBoardSolver.setNumPos(9);
         gameBoard.invalidate();
+    }
+
+    public void solve(View view){
+        if(solveBTN.getText().toString().equals("SOLVE")){
+            solveBTN.setText("CLEAR");
+        }else{
+            solveBTN.setText("SOLVE");
+        }
     }
 }

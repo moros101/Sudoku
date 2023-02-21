@@ -25,6 +25,7 @@
 
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -132,6 +133,20 @@
             android:textColor="@color/black"
             android:textSize="24sp" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/solve_btn"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/solve_btn"
+        android:onClick="solve"
+        android:text="SOLVE"
+        android:textSize="18sp"
+        custom:layout_constraintEnd_toEndOf="parent"
+        custom:layout_constraintHorizontal_bias="0.498"
+        custom:layout_constraintStart_toStartOf="parent"
+        custom:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
