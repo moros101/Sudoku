@@ -22,6 +22,37 @@ public class Solver {
         emptyBoxIndex = new ArrayList<>();
     }
 
+
+    private boolean check(int r, int c){
+        if(this.board[r][c] > 0){
+
+            for(int i=0; i<9; i++){
+                // number present in row
+                if(this.board[i][c] == this.board[r][c] && r!=i){
+                    return false;
+                }
+                // number present in col
+                if(this.board[r][i] == this.board[r][c] && c!=i){
+                    return false;
+                }
+            }
+            // number present in 3x3 grid
+            int boxRow = r/3;
+            int boxCol = c/3;
+
+            for(int i=boxRow*3; i<boxRow*3 + 3; i++){
+                for(int j=boxCol*3; j<boxCol*3 + 3; j++){
+
+                    if(this.board[i][j] == this.board[r][c] && r!=i && c!=j){
+                        return false;
+                    }
+                }
+            }
+
+        }
+        return true;
+    }
+
     // extract rows and cols of empty box i.e. 0
     public void getEmptyBoxIndexs(){
         for(int i=0; i<9; i++){
