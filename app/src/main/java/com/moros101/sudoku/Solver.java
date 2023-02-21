@@ -37,10 +37,10 @@ public class Solver {
     // update board with new num
     private void setNumPos(int num){
         if(this.selected_col != -1 && this.selected_row != -1){
-            if(this.board[this.selected_row][this.selected_col] == num){
-                this.board[this.selected_row][this.selected_col] = 0;
+            if(this.board[this.selected_row-1][this.selected_col-1] == num){
+                this.board[this.selected_row-1][this.selected_col-1] = 0;
             }else{
-                this.board[this.selected_row][this.selected_col] = num;
+                this.board[this.selected_row-1][this.selected_col-1] = num;
             }
         }
     }
