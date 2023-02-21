@@ -53,6 +53,39 @@ public class Solver {
         return true;
     }
 
+    public boolean solve(SudokuBoardView display){
+
+        int r = -1;int c = -1;
+        // finds first empty cell
+        for(int i=0; i<9; i++){
+            for(int j=0; j<9; j++){
+                if(this.board[i][j] == 0){
+                    r = i;
+                    c = j;
+                    break;
+                }
+            }
+        }
+        if(r == -1 || c == -1){
+            return true;
+        }
+        for(int i=1; i<10; i++){
+            this.board[r][c] = i;
+            display.invalidate();
+
+            if(check(r,c)){
+                if(solve(display)){
+                    return true;
+                }
+            }
+
+            //backtrack
+            this.board[r][c] = 0;
+        }
+
+        return false;
+    }
+
     // extract rows and cols of empty box i.e. 0
     public void getEmptyBoxIndexs(){
         for(int i=0; i<9; i++){
